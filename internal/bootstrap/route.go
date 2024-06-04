@@ -18,6 +18,20 @@ func RegisterRoute(server *raiden.Server) {
 		},
 		{
 			Type:       raiden.RouteTypeRest,
+			Path:       "/orders",
+			Methods:    []string{},
+			Controller: &controllers.OrderController{},
+			Model:      models.Order{},
+		},
+		{
+			Type:       raiden.RouteTypeRest,
+			Path:       "/orderitems",
+			Methods:    []string{},
+			Controller: &controllers.OrderitemController{},
+			Model:      models.Orderitem{},
+		},
+		{
+			Type:       raiden.RouteTypeRest,
 			Path:       "/products",
 			Methods:    []string{},
 			Controller: &controllers.ProductController{},

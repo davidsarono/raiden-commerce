@@ -10,12 +10,12 @@ import (
 
 type Order struct {
 	raiden.ModelBase
-	Id        int32      `json:"id,omitempty" column:"name:id;type:integer;primaryKey;nullable:false;default:nextval('\"Order_id_seq\"'::regclass)"`
+	Id        int32      `json:"id,omitempty" column:"name:id;type:integer;primaryKey;nullable:false;default:nextval('order_id_seq'::regclass)"`
 	OrderDate *time.Time `json:"order_date,omitempty" column:"name:order_date;type:timestamp;nullable;default:CURRENT_TIMESTAMP"`
-	UserId    *uuid.UUID `json:"user_id,omitempty" column:"name:user_id;type:uuid;nullable"`
+	UserId    *uuid.UUID `json:"user_id,omitempty" column:"name:user_id;type:uuid;nullable;default:auth.uid()"`
 
 	// Table information
-	Metadata string `json:"-" schema:"public" rlsEnable:"false" rlsForced:"false"`
+	Metadata string `json:"-" schema:"public" rlsEnable:"true" rlsForced:"false"`
 
 	// Access control
 	Acl string `json:"-" read:"" write:""`
